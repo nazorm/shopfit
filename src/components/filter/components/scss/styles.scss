@@ -1,0 +1,77 @@
+@import "config";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.filter-section {
+  width: 90%;
+  margin: 0 auto 5%;
+  .form{
+    .search-bar {
+      padding: 8px 5px;
+      border-radius: 3px 0 0 3px;
+      border: 0.5px solid $neutralcolor;
+      border-right: transparent;
+    }
+    .search-btn {
+      padding: 8px 5px;
+      border-radius: 0 3px 3px 0;
+      border: 0.5px solid $neutralcolor;
+      border-left: transparent;
+    }
+    @media only screen and (min-width: 700px){
+      width: 50%;
+    }
+  }
+ 
+  @media only screen and (min-width: 700px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+
+.filters-sect {
+  display: block;
+  .label {
+    color: $blackcolor;
+    font-size: $smalltext;
+    margin: 0 0 5px 0;
+  }
+  .filter {
+    margin: 5px;
+    border: 0.5px solid $neutralcolor;
+    border-radius: 3px;
+    padding: 8px 5px;
+    background-color: transparent;
+    @media only screen and (min-width: 700px){
+      width: 98%;
+      margin: 5px 3px;
+    }
+  }
+  @media only screen and (min-width: 700px) {
+    margin: 0;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.filter-container {
+  position: relative;
+  width: 28%;
+  .select-label {
+    color: $bordercolor;
+    font-size: 10px;
+    font-family: $fontstack;
+    font-weight: 400;
+    position: absolute;
+    left: 12%;
+    background-color: white;
+    padding: 0 2px;
+  }
+}
