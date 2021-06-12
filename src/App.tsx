@@ -3,18 +3,13 @@ import './App.css';
 
 const App : React.FC=()=> {
   return (
+    <React.Fragment>
+
+   
     <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-         lEARN REACT AND TYPESCRIPT
-        </a>
-      </header>
+     <h1>Shopfit</h1>
     </div>
+    </React.Fragment>
   );
 }
 
