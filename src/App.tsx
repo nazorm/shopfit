@@ -1,17 +1,22 @@
 import React from 'react';
-import './App.css';
+import Header from "./Header";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from './components/home/components/Home';
+import Cart from './components/cart/components/Cart';
+import "./App.scss";
 
-const App : React.FC=()=> {
+const App: React.FC = () => {
   return (
-    <React.Fragment>
-
-   
-    <div className="App">
-     <h1>Shopfit</h1>
-     <h2>Really Please work</h2>
-    </div>
-    </React.Fragment>
+    <Router>
+      <div className="container">
+        <Switch>
+          <Header />
+          <Route exact path ='/'><Home/></Route>
+          <Route exact path='/cart'><Cart/></Route>
+        </Switch>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
