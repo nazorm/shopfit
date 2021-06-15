@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import "../../home/components/scss/styles.scss";
 import { ICartProps } from "./types";
@@ -13,8 +14,9 @@ function Cart({ cartProducts, handleRemovefromCart }: ICartProps): JSX.Element {
     return <p></p>;
   }
   return (
+      <React.Fragment>     
     <div className="product-card">
-      <Link to="/">go to home</Link>
+    <Link to="/">go to home</Link>
       <div key={id}>
         <img
           src={image}
@@ -36,6 +38,7 @@ function Cart({ cartProducts, handleRemovefromCart }: ICartProps): JSX.Element {
         </button>
       </div>
     </div>
+    </React.Fragment>
   );
 }
 

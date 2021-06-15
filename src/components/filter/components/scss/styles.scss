@@ -21,6 +21,11 @@
       border-radius: 0 3px 3px 0;
       border: 0.5px solid $neutralcolor;
       border-left: transparent;
+      font-weight: 500;
+    }
+    .search-btn:hover {
+      cursor: pointer;
+      opacity: 0.5;
     }
     @media only screen and (min-width: 700px){
       width: 50%;
@@ -47,7 +52,7 @@
     border: 0.5px solid $neutralcolor;
     border-radius: 3px;
     padding: 8px 5px;
-    background-color: transparent;
+    background-color: white;
     @media only screen and (min-width: 700px){
       width: 98%;
       margin: 5px 3px;
@@ -68,10 +73,12 @@
     color: $bordercolor;
     font-size: 10px;
     font-family: $fontstack;
-    font-weight: 400;
+    font-weight: 500;
     position: absolute;
-    left: 12%;
     background-color: white;
+    left: 12%;
+    top: -2%;
+    border-radius: 3px;
     padding: 0 2px;
   }
 }

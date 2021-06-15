@@ -6,14 +6,17 @@
 
 .container {
   width: 100%;
+
 }
 .header {
   width: 100%;
-  padding: 3% 5%;
+  padding: 1% 5%;
   margin: 0 0 3% ;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
+
   .header-nav {
     .nav-ul {
       width: 100%;

@@ -38,6 +38,7 @@ const App = (): JSX.Element => {
 
   // handle add to cart
   const handleCart = (id: number) => {
+    console.log(id)
     const cartProduct = products.find((product) => {
       return product.id === id;
     });
