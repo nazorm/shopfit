@@ -1,14 +1,21 @@
 import React from "react";
 import "./scss/styles.scss";
+import { IFilterProps } from "./types";
 
-const Filter: React.FC = () => {
+const Filter = ({
+  handleSearchChange,
+  handleCategoryChange,
+  handleOrderChange,
+  handleSearch,
+}: IFilterProps) => {
   return (
     <div className="filter-section">
-      <form className="form">
+      <form className="form" onSubmit={handleSearch}>
         <input
           type="text"
-          placeholder="search here..."
+          placeholder="search name..."
           className="search-bar"
+          onChange={handleSearchChange}
         />
         <button className="search-btn">Search</button>
       </form>
@@ -18,28 +25,28 @@ const Filter: React.FC = () => {
         {/* category filter */}
         <div className="filter-container">
           <span className="select-label">Category</span>
-          <select className="filter">
+          <select className="filter" onChange={handleCategoryChange}>
             <option value="default">Default</option>
-            <option value="low">low-high</option>
-            <option value="high">high-low</option>
+            <option value="men">Men</option>
+            <option value="bracelet">Bracelet</option>
           </select>
         </div>
-        {/* category filter */}
+        {/* order filter */}
         <div className="filter-container">
-          <span className="select-label">Category</span>
-          <select className="filter">
+          <span className="select-label">Order</span>
+          <select className="filter" onChange={handleOrderChange}>
             <option value="default">Default</option>
             <option value="low">low-high</option>
             <option value="high">high-low</option>
           </select>
         </div>
 
-        {/* order filter */}
+        {/* category filter */}
         <div className="filter-container">
-          <span className="select-label">Order</span>
+          <span className="select-label">Category</span>
           <select className="filter">
             <option value="default">Default</option>
-            <option value="shirt">Shirt</option>
+            <option value="men">Men</option>
             <option value="bracelet">Bracelet</option>
           </select>
         </div>
