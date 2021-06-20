@@ -6,3 +6,12 @@ export interface IProduct {
   image: string;
   
 }
+export interface ICartegory{
+  kid : string,
+  hats : string,
+  kiddies : string,
+  men :string,
+  turtleneck :string,
+  vintage :string,
+  women :string,
+}

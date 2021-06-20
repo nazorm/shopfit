@@ -5,6 +5,7 @@ import Filter from "./components/filter/components/Filter";
 import Home from "./components/home/components/Home";
 import Cart from "./components/cart/components/Cart";
 import PaginationBtn from "./components/pagination/PaginationBtn";
+import Landing from "./components/landing/components/Landing";
 import axios from "axios";
 import "./App.scss";
 import { IProduct } from "./components/common/types";
@@ -29,7 +30,6 @@ const App = (): JSX.Element => {
     setProducts(res.data);
     setFilteredProducts(res.data);
     setLoading(false);
-    
   };
 
   // handle page
@@ -39,7 +39,7 @@ const App = (): JSX.Element => {
 
   // handle add to cart
   const handleCart = (id: number) => {
-    console.log(id)
+    console.log(id);
     const cartProduct = products.find((product) => {
       return product.id === id;
     });
@@ -156,14 +156,17 @@ const App = (): JSX.Element => {
     <Router>
       <div className="container">
         <Header />
-        <Filter
-          handleSearch={handleSearch}
-          handleSearchChange={handleSearchChange}
-          handleCategoryChange={handleCategoryChange}
-          handleOrderChange={handleOrderChange}
-        />
         <Switch>
           <Route exact path="/">
+            <Landing />
+          </Route>
+          <Route exact path="/home">
+            <Filter
+              handleSearch={handleSearch}
+              handleSearchChange={handleSearchChange}
+              handleCategoryChange={handleCategoryChange}
+              handleOrderChange={handleOrderChange}
+            />
             {loading || !currentList ? (
               <p>Loading...</p>
             ) : (
@@ -183,7 +186,7 @@ const App = (): JSX.Element => {
           <Route exact path="/cart">
             {cart.length === 0 ? (
               <h2 className="emptycart-text">
-                Nothing in Cart <Link to="/">Start Shopping</Link>
+                Nothing in Cart <Link to="/home">Start Shopping</Link>
               </h2>
             ) : (
               <div className="product-container">

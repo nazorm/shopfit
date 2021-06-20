@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./scss/styles.scss";
+import "./styles.scss";
 import { IProductCardProps } from "./type";
 
 const Home = ({ productcard, handleCart }: IProductCardProps) => {
@@ -8,7 +8,7 @@ const Home = ({ productcard, handleCart }: IProductCardProps) => {
   if (!id) {
     return <p></p>;
   }
-  return (
+  const productCard = (
     <div className="product-card">
       <Link to="/cart">go to cart</Link>
       <div key={id}>
@@ -29,6 +29,11 @@ const Home = ({ productcard, handleCart }: IProductCardProps) => {
         </button>
       </div>
     </div>
+  );
+  return (
+    <section>
+      {productCard}
+    </section>
   );
 };
 

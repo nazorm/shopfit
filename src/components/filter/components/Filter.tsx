@@ -1,5 +1,5 @@
 import React from "react";
-import "./scss/styles.scss";
+import './styles.scss';
 import { IFilterProps } from "./types";
 
 const Filter = ({
