@@ -29,6 +29,7 @@ const App = (): JSX.Element => {
     setProducts(res.data);
     setFilteredProducts(res.data);
     setLoading(false);
+    
   };
 
   // handle page
