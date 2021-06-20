@@ -182,6 +182,11 @@ const App = (): JSX.Element => {
                 })}
               </div>
             )}
+            <PaginationBtn
+              productsPerPage={propductsPerPage}
+              totalProducts={products?.length}
+              handlePage={handlePage}
+            />
           </Route>
           <Route exact path="/cart">
             {cart.length === 0 ? (
@@ -203,11 +208,6 @@ const App = (): JSX.Element => {
             )}
           </Route>
         </Switch>
-        <PaginationBtn
-          productsPerPage={propductsPerPage}
-          totalProducts={products?.length}
-          handlePage={handlePage}
-        />
       </div>
     </Router>
   );

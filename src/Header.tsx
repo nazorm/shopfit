@@ -7,7 +7,7 @@ function Header():JSX.Element{
       <nav className="header-nav">
         <img src="" alt="hamburger" className="hamburger" />
         <ul className="nav-ul">
-          <li className="nav-li">Welcome-newbie</li>
+          <li className="nav-li">Welcome Shopper</li>
         </ul>
       </nav>
     </header>
