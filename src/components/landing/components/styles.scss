@@ -1,0 +1,80 @@
+@import "../../common/config";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.landing-container{
+    text-align: center;
+}
+.landingcategories-container {
+  width: 90%;
+  margin: 0 auto 3%;
+  @media only screen and (min-width: 500px) and (max-width: 900px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 15px;
+  }
+  @media only screen and (min-width: 901px) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    grid-gap: 15px;
+  }
+}
+.category {
+  position: relative;
+}
+.category-image {
+  filter: brightness(50%);
+  width: 100%;
+  margin-bottom: 15px;
+  @media only screen and (min-width: 901px) {
+    height: 250px;
+    margin-bottom: 0;
+  }
+}
+.category:hover{
+    cursor: pointer;
+    .btn--category{
+        display: inline;
+        cursor: pointer;
+    }
+}
+.landing-label {
+  position: absolute;
+  color: white;
+  font-family: $fontstack;
+  font-weight: 500;
+  font-size: $mediumtext;
+  left: 45%;
+  top: 40%;
+}
+.btn--category {
+  position: absolute;
+  display: none;
+  left: 30%;
+  top: 60%;
+  @media only screen and (min-width: 500px) and (max-width: 900px) {
+    display: inline;
+    padding: 5px;
+  }
+//   @media only screen and (min-width: 901px) {
+//     display: inline;
+//   }
+}
+
+.btn{
+  padding: 10px 50px;
+  font-family: $fontstack;
+  font-size: $smalltext;
+  font-weight: 500;
+  color: white;
+  background: transparent;
+}
+.btn-link, .btn--link{
+  background-color: black;
+  color: white;
+  text-align: center;
+  margin: 0 0 2% 0 ;
+}
