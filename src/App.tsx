@@ -31,7 +31,7 @@ const App = (): JSX.Element => {
   const [filters, setFilters] = useState({
     search: "",
     category: "",
-    date: "",
+    order: "",
   });
 
   const fetchProducts = async () => {
@@ -44,7 +44,7 @@ const App = (): JSX.Element => {
   useEffect(() => {
     fetchProducts();
     myStorage.setItem("savedCart", JSON.stringify(cart));
-  }, [products, cart, myStorage]);
+  }, [cart, myStorage]);
   // handle page
   const handlePage = (number: number) => {
     setCurrentPage(number);
@@ -65,8 +65,7 @@ const App = (): JSX.Element => {
   const handleFilters = (newFilter: {
     category: string;
     search: string;
-    date: string;
-    order?: string;
+    order: string;
   }) => {
     let isFilteredProducts = products;
 
