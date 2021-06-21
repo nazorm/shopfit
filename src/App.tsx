@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { FirebaseContext } from "./components/firebase";
 import Header from "./Header";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Filter from "./components/filter/components/Filter";
@@ -217,13 +217,24 @@ const App = (): JSX.Element => {
               </div>
             )}
             {cart.length ? (
-              <button className=" btn btn--chkout">Proceed to Checkout</button>
+              <Link to='/signin' className='btn--chkout'>
+               <button className=" btn btn--chkout">Proceed to Checkout</button>
+              </Link>
+             
             ) : (
               ""
             )}
           </Route>
-          <Route exact path="/signup"> <Signup /> </Route>
-          <Route exact path="/signin"> <Signin /> </Route>
+          <Route exact path="/signup">
+            <FirebaseContext.Consumer>
+              {(firebase) => <Signup firebase={firebase} />}
+            </FirebaseContext.Consumer>
+          </Route>
+          <Route exact path="/signin">
+            <FirebaseContext.Consumer>
+              {(firebase) => <Signin firebase={firebase} />}
+            </FirebaseContext.Consumer>
+          </Route>
         </Switch>
       </div>
     </Router>

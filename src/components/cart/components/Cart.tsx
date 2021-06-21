@@ -15,11 +15,11 @@ function Cart({ cartProducts, handleRemovefromCart }: ICartProps): JSX.Element {
   }
   return (
     <React.Fragment>
-      <div className="product-card">
+      <div className="product-card product-card__cart">
         <div key={id}>
           <img
             src={image}
-            className="product-image"
+            className="product-image product-image__cart"
             alt="product"
             height="200px"
           />

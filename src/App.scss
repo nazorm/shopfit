@@ -13,7 +13,7 @@
 .header {
   width: 100%;
   padding: 1% 5%;
-  margin: 0 0 1%;
+  margin: 1% 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,7 +61,7 @@
 }
 .product-container {
   width: 90%;
-  margin: 5% auto 0;
+  margin: 2% auto 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-column-gap: 2%;
