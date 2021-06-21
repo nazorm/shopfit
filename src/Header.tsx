@@ -14,13 +14,7 @@ function Header({cartCounter} : ICartCounter): JSX.Element {
         >
           Welcome Shopper
         </a>
-        <a
-          href="http://placecorgi.com"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          Sign In
-        </a>
+        <Link to='/signup'>Sign Up</Link>
         <Link to="/cart" className="to-cart">
           <ShoppingCartOutlined className="hamburger" />
           <span className="cart-counter">{cartCounter}</span>

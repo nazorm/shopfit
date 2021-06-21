@@ -1,0 +1,10 @@
+@import '../common/config';
+
+.user-form{
+    width: 100px;
+    height: 100px;
+    @media only screen  and (min-width:700px){
+        width: 100px;
+        height: 100px;
+    }
+}

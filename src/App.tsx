@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import Header from "./Header";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Filter from "./components/filter/components/Filter";
@@ -6,6 +7,8 @@ import Home from "./components/home/components/Home";
 import Cart from "./components/cart/components/Cart";
 import PaginationBtn from "./components/pagination/PaginationBtn";
 import Landing from "./components/landing/components/Landing";
+import Signup from "./components/validation/Signup";
+import Signin from "./components/validation/Signin";
 import axios from "axios";
 import "./App.scss";
 import { IProduct } from "./components/common/types";
@@ -219,6 +222,8 @@ const App = (): JSX.Element => {
               ""
             )}
           </Route>
+          <Route exact path="/signup"> <Signup /> </Route>
+          <Route exact path="/signin"> <Signin /> </Route>
         </Switch>
       </div>
     </Router>
