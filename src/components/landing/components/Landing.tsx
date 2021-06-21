@@ -1,5 +1,4 @@
 import React from "react";
-import { ICartegoryImagesProps } from "./types";
 import { categories } from "./categories";
 import {Link} from 'react-router-dom'
 import './styles.scss'
