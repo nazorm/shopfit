@@ -1,3 +1,5 @@
+@import "./components/common/config";
+@import url("https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,35 +8,58 @@
 
 .container {
   width: 100%;
+  text-align: center;
 }
 .header {
   width: 100%;
   padding: 1% 5%;
-  margin: 0 0 1% ;
+  margin: 0 0 1%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: white;
-
+  .company-name {
+    font-family: "Viaoda Libre", cursive;
+    font-size: $bigtext;
+  }
   .header-nav {
-    .nav-ul {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      li {
-        list-style: none;
-        color: black;
-        font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      color: black;
+      font-family: "Viaoda Libre", cursive;
+      font-size: $smalltext;
+      margin: 0 5px;
+      @media only screen and (min-width: 900px) {
+        margin: 0;
+        font-size: $mediumtext;
       }
     }
-  }
-  .hamburger {
-    @media only screen and (min-width: 700px) {
-      display: none;
+    @media only screen and (min-width: 900px) {
+      width: 30%;
     }
   }
+  .hamburger svg {
+    display: inline;
+    width: 28px;
+    height: 28px;
+    fill: rgb(85, 85, 85);
+  }
 }
-.product-container{
+.to-cart {
+  position: relative;
+  .cart-counter {
+    position: absolute;
+    font-size: $smalltext;
+  }
+}
+
+.btn--chkout{
+  background-color: black;
+  margin: 5% 0;
+}
+.product-container {
   width: 90%;
   margin: 5% auto 0;
   display: grid;
@@ -45,6 +70,6 @@
     grid-template-columns: repeat(4, minmax(150px, 1fr));
   }
 }
-.emptycart-text{
+.emptycart-text {
   text-align: center;
 }
