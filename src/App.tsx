@@ -12,8 +12,17 @@ import { IProduct } from "./components/common/types";
 
 // eslint-disable-next-line no-empty-pattern
 const App = (): JSX.Element => {
+  const myStorage = window.localStorage;
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [cart, setCart] = useState<IProduct[]>([]);
+  const [cart, setCart] = useState<IProduct[]>(() => {
+    const savedCart = myStorage.getItem("savedCart");
+    if (savedCart) {
+      return JSON.parse(savedCart);
+    } else {
+      return [];
+    }
+  });
+
   const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [propductsPerPage] = useState<number>(9);
@@ -32,6 +41,10 @@ const App = (): JSX.Element => {
     setLoading(false);
   };
 
+  useEffect(() => {
+    fetchProducts();
+    myStorage.setItem("savedCart", JSON.stringify(cart));
+  }, [products, cart, myStorage]);
   // handle page
   const handlePage = (number: number) => {
     setCurrentPage(number);
@@ -39,7 +52,6 @@ const App = (): JSX.Element => {
 
   // handle add to cart
   const handleCart = (id: number) => {
-    console.log(id);
     const cartProduct = products.find((product) => {
       return product.id === id;
     });
@@ -105,7 +117,6 @@ const App = (): JSX.Element => {
   // handle category change
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
-    console.log(value);
     const newFilter = { ...filters, category: value };
     setFilters(newFilter);
     handleFilters(newFilter);
@@ -148,14 +159,11 @@ const App = (): JSX.Element => {
     indexOfFirstProduct,
     indexOfLastProduct
   );
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   return (
     <Router>
       <div className="container">
-        <Header />
+        <Header cartCounter={cart.length} />
         <Switch>
           <Route exact path="/">
             <Landing />
@@ -205,6 +213,11 @@ const App = (): JSX.Element => {
                   );
                 })}
               </div>
+            )}
+            {cart.length ? (
+              <button className=" btn btn--chkout">Proceed to Checkout</button>
+            ) : (
+              ""
             )}
           </Route>
         </Switch>
