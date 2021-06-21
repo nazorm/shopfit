@@ -15,3 +15,7 @@ export interface ICartegory{
   vintage :string,
   women :string,
 }
+
+export interface ICartCounter{
+  cartCounter :number,
+}
