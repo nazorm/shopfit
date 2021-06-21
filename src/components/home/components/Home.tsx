@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./styles.scss";
 import { IProductCardProps } from "./type";
 
@@ -10,7 +9,6 @@ const Home = ({ productcard, handleCart }: IProductCardProps) => {
   }
   const productCard = (
     <div className="product-card">
-      <Link to="/cart">go to cart</Link>
       <div key={id}>
         <img
           src={image}
