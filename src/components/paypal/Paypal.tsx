@@ -19,10 +19,8 @@ const PaypalBtn = (): JSX.Element => {
     console.log("Error!", err);
   };
   const client = {
-    sandbox:        
-      "ATDClrog6UlvC2aqc4DGxJUUdmJQO1BuLRitmKmjLxF1Q1aaK3tS6kVZoIRKOfaXrL9nCrto2uYh-Dvg",
-    production:
-      "ELUIR2HFbBJYoGmBtuHLhyMH-_PBLrpQqOoIZQMh2sQwsH0_yq4hxLZ6AWq2aCzLnkmopnuudlLa3jmS",
+    sandbox:  `${process.env.REACT_APP_SANDBOX}`,
+    production: `${process.env.REACT_APP_PRODUCTION}`
   };
 
   return (
