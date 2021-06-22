@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.scss";
 import { IProductCardProps } from "./type";
 
-const Home = ({ productcard, handleCart }: IProductCardProps) => {
+const Home = ({ productcard, handleCart, disabled }: IProductCardProps) => {
   const { id, title, price, description, image } = productcard;
   if (!id) {
     return <p></p>;
@@ -22,17 +22,17 @@ const Home = ({ productcard, handleCart }: IProductCardProps) => {
         </div>
 
         <h4 className="product-price">$ {price}</h4>
-        <button className="handlecart-btn" onClick={() => handleCart(id)}>
+        <button
+          className="handlecart-btn"
+          onClick={() => handleCart(id)}
+          disabled={disabled.includes(id)}
+        >
           Add to Cart
         </button>
       </div>
     </div>
   );
-  return (
-    <section>
-      {productCard}
-    </section>
-  );
+  return <section>{productCard}</section>;
 };
 
 export default Home;

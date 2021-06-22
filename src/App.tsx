@@ -12,6 +12,7 @@ import Signin from "./components/validation/Signin";
 import axios from "axios";
 import "./App.scss";
 import { IProduct } from "./components/common/types";
+import PaypalBtn from "./components/paypal/Paypal";
 
 // eslint-disable-next-line no-empty-pattern
 const App = (): JSX.Element => {
@@ -25,7 +26,7 @@ const App = (): JSX.Element => {
       return [];
     }
   });
-
+  const [disabled, setDisabled] = useState<number[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [propductsPerPage] = useState<number>(9);
@@ -61,6 +62,10 @@ const App = (): JSX.Element => {
     if (!cartProduct) {
       return;
     }
+    if (!disabled.includes(id)) {
+      setDisabled([id, ...disabled]);
+    }
+
     const cartItems = [cartProduct, ...cart];
     setCart(cartItems);
   };
@@ -153,6 +158,11 @@ const App = (): JSX.Element => {
       return product.id !== id;
     });
     setCart(filteredCartProduct);
+    const newDisableds = disabled.filter((d) => {
+      // eslint-disable-next-line eqeqeq
+      return d != id;
+    });
+    setDisabled(newDisableds);
   };
   // get current posts
   const indexOfLastProduct = currentPage * propductsPerPage;
@@ -187,6 +197,7 @@ const App = (): JSX.Element => {
                       key={product.id}
                       productcard={product}
                       handleCart={handleCart}
+                      disabled={disabled}
                     />
                   );
                 })}
@@ -217,10 +228,11 @@ const App = (): JSX.Element => {
               </div>
             )}
             {cart.length ? (
-              <Link to='/signin' className='btn--chkout'>
-               <button className=" btn btn--chkout">Proceed to Checkout</button>
+              <Link to="/payment" className="btn--chkout">
+                <button className=" btn btn--chkout">
+                  Proceed to Checkout
+                </button>
               </Link>
-             
             ) : (
               ""
             )}
@@ -234,6 +246,9 @@ const App = (): JSX.Element => {
             <FirebaseContext.Consumer>
               {(firebase) => <Signin firebase={firebase} />}
             </FirebaseContext.Consumer>
+          </Route>
+          <Route exact path="/payment">
+            <PaypalBtn />
           </Route>
         </Switch>
       </div>
