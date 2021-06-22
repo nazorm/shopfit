@@ -1,22 +1,23 @@
 import React, { FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { IValidate } from "./types";
-import { useReUsableFunction } from "./useReUsable";
+import { useReusableFunction} from "./useReUsable";
 
 const Signin = ({ firebase }: IValidate): JSX.Element => {
-  const email = useReUsableFunction("");
-  const password = useReUsableFunction("");
+  const email = useReusableFunction("");
+  const password = useReusableFunction("");
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(email.state, password.state);
+    console.log(email.value, password.value);
     if (firebase) {
       firebase
-        .doCreateUserWithEmailAndPassword(email.state, password.state)
+        .doSignInWithEmailAndPassword(email.value, password.value)
         .then((authUser) => {
           console.log(authUser);
-        });
+        })
       // .catch((error) => {
+      //   console.log(error)
       //   return <p style={{ backgroundColor: "red" }}>{error.message}</p>;
       // });
     }
@@ -28,7 +29,7 @@ const Signin = ({ firebase }: IValidate): JSX.Element => {
       <section className="validation-container">
         <form onSubmit={handleSubmit} className="user-form">
           <input
-            type="text"
+            type="email"
             placeholder="Email Address"
             className="input"
             {...email}

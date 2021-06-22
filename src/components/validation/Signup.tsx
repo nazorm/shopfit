@@ -1,25 +1,27 @@
 import React, { FormEvent, useState } from "react";
 import {Link} from 'react-router-dom'
-import { useReUsableFunction } from "./useReUsable";
+import { useReusableFunction } from './useReUsable';
 import './styles.scss';
 import { IValidate } from "./types";
 
 const Signup = ({firebase}:IValidate): JSX.Element => {
-  const username = useReUsableFunction("");
-  const email = useReUsableFunction("");
-  const password = useReUsableFunction("");
-  const repassword = useReUsableFunction("");
+  const username = useReusableFunction("");
+  const email = useReusableFunction("");
+  const password = useReusableFunction("");
+  const repassword = useReusableFunction("");
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(password.state, repassword.state)
-    if(password.state !== repassword.state){
+    console.log(password.value, repassword.value)
+    if(password.value !== repassword.value){
         // const errorMessage =  <p style={{backgroundColor: 'red'}}>passwords do not match</p>
          alert('error')
     }else if(firebase){
-        firebase.doCreateUserWithEmailAndPassword(email.state, password.state)
+        firebase.doCreateUserWithEmailAndPassword(email.value, password.value)
         .then(authUser=>{
-            console.log(authUser);
+          if(authUser.additionalUserInfo?.isNewUser){
+            alert('Account successfully created')
+          }
         })
         // .catch(error => {
         //     return <p style={{backgroundColor: 'red'}}>{error.message}</p>
@@ -40,7 +42,7 @@ const Signup = ({firebase}:IValidate): JSX.Element => {
         className="input"
         {...username}
       />
-      <input type="text" placeholder="Email Address" className='input' {...email} />
+      <input type="email" placeholder="Email Address" className='input' {...email} />
       <input type="password" placeholder="Password" className='input' {...password} />
       <input type="password" placeholder="Confirm Password" className='input' {...repassword} />
       <button type="submit" className='btn--validate' >Enter</button>
