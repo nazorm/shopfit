@@ -1,4 +1,4 @@
-import { IProduct } from "../../common/types";
+import { IProduct } from "../common/types";
 
 export interface ICartProps{
     cartProducts : IProduct;

@@ -1,6 +1,6 @@
 import React from "react";
 import "../../home/components/styles.scss";
-import { ICartProps } from "./types";
+import { ICartProps } from "../types";
 
 function Cart({ cartProducts, handleRemovefromCart }: ICartProps): JSX.Element {
   const { id, title, price, description, image } = cartProducts;

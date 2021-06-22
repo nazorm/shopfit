@@ -1,6 +1,6 @@
 import React from "react";
 import './styles.scss';
-import { IFilterProps } from "./types";
+import { IFilterProps } from "../types";
 
 const Filter = ({
   handleSearchChange,
