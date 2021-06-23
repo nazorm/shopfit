@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles.scss";
-import { IProductCardProps } from "./type";
+import "../styles.scss";
+import { IProductCardProps } from "../type";
 
 const Home = ({ productcard, handleCart, disabled }: IProductCardProps) => {
   const { id, title, price, description, image } = productcard;

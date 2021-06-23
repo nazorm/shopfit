@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { FirebaseContext } from "./components/firebase";
 import Header from "./Header";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  Redirect,
+} from "react-router-dom";
 import Filter from "./components/filter/feature/Filter";
-import Home from "./components/home/components/Home";
+import Home from "./components/home/page/Home";
 import Cart from "./components/cart/feature/Cart";
 import PaginationBtn from "./components/pagination/PaginationBtn";
 import Landing from "./components/landing/components/Landing";
@@ -12,10 +17,10 @@ import Signin from "./components/authentication/Signin";
 import axios from "axios";
 import "./App.scss";
 import { IProduct } from "./components/common/types";
-import PaypalBtn from "./components/paypal/Paypal";
+import PaypalBtn from "./components/payment/Paypal";
 
 // eslint-disable-next-line no-empty-pattern
-const App = (): JSX.Element => {
+const App = (props: any): JSX.Element => {
   const myStorage = window.localStorage;
   const [products, setProducts] = useState<IProduct[]>([]);
   const [cart, setCart] = useState<IProduct[]>(() => {
@@ -37,7 +42,7 @@ const App = (): JSX.Element => {
     category: "",
     order: "",
   });
-
+  const authenticated = (authUser: any) => authUser;
   const fetchProducts = async () => {
     const res = await axios.get("https://fakestoreapi.com/products");
     setProducts(res.data);
@@ -54,6 +59,14 @@ const App = (): JSX.Element => {
     setCurrentPage(number);
   };
 
+  // handle authorisation check
+  const handleAuthorisationCheck = () => {
+    if (!authenticated) {
+      <Redirect to="/signin" />;
+    } else {
+      <Redirect to="/payment" />;
+    }
+  };
   // handle add to cart
   const handleCart = (id: number) => {
     const cartProduct = products.find((product) => {
@@ -173,7 +186,7 @@ const App = (): JSX.Element => {
   );
 
   return (
-    <Router>
+    <Router basename="/shopfit">
       <div className="container">
         <Header cartCounter={cart.length} />
         <Switch>
@@ -229,7 +242,10 @@ const App = (): JSX.Element => {
             )}
             {cart.length ? (
               <Link to="/payment" className="btn--chkout">
-                <button className=" btn btn--chkout">
+                <button
+                  className=" btn btn--chkout"
+                  onClick={handleAuthorisationCheck}
+                >
                   Proceed to Checkout
                 </button>
               </Link>
@@ -237,16 +253,8 @@ const App = (): JSX.Element => {
               ""
             )}
           </Route>
-          <Route exact path="/signup">
-            <FirebaseContext.Consumer>
-              {(firebase) => <Signup firebase={firebase} />}
-            </FirebaseContext.Consumer>
-          </Route>
-          <Route exact path="/signin">
-            <FirebaseContext.Consumer>
-              {(firebase) => <Signin firebase={firebase} />}
-            </FirebaseContext.Consumer>
-          </Route>
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/signin" component={Signin} />
           <Route exact path="/payment">
             <PaypalBtn />
           </Route>

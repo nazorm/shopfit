@@ -1,4 +1,5 @@
-@import '../../common/config';
+
+@import '../common/config';
 
 * {
   box-sizing: border-box;
@@ -10,15 +11,12 @@
   -webkit-box-shadow: 0 0 5px $bordercolor;
   box-shadow: 0 0 5px $bordercolor;
   width: 100%;
-  height: 440px;
+  height: 420px;
   margin: 5px auto 10px;
   overflow: hidden;
   border: transparent;
   border-radius: 10px;
   padding: 15px;
-background-color: rgba(0,0,0,0.5);
-}
-.product-card__cart {
   background-color: whitesmoke;
 }
 .product-card:hover{
@@ -30,9 +28,6 @@ background-color: rgba(0,0,0,0.5);
   width: 100%;
   height: 230px;
   background-color: transparent;
-  filter: brightness(50%);
-}
-.product-image__cart{
   filter: brightness(96%);
 }
 .product-name {
@@ -60,11 +55,11 @@ background-color: rgba(0,0,0,0.5);
   position: absolute;
   width: 100%;
   bottom: 0;
-  left: -2%;
+  left: 0;
   right: 0;
   font-weight: 700;
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
   border: 1px solid $neutralcolor;
   background-color: black;
   color: white;

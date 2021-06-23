@@ -1,5 +1,5 @@
 import React from "react";
-import "../../home/components/styles.scss";
+import '../../home/styles.scss'
 import { ICartProps } from "../types";
 
 function Cart({ cartProducts, handleRemovefromCart }: ICartProps): JSX.Element {
@@ -15,11 +15,11 @@ function Cart({ cartProducts, handleRemovefromCart }: ICartProps): JSX.Element {
   }
   return (
     <React.Fragment>
-      <div className="product-card product-card__cart">
+      <div className="product-card">
         <div key={id}>
           <img
             src={image}
-            className="product-image product-image__cart"
+            className="product-image"
             alt="product"
             height="200px"
           />

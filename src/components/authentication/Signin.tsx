@@ -1,19 +1,23 @@
-import React, { FormEvent } from "react";
-import { Link } from "react-router-dom";
+import React, { FormEvent, useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { FirebaseContext } from "../firebase";
 import { IValidate } from "./types";
 import { useReusableFunction} from "./useReUsable";
 
-const Signin = ({ firebase }: IValidate): JSX.Element => {
+
+const Signin = ({ }: IValidate): JSX.Element => {
+  const firebase = useContext(FirebaseContext)
+  const history = useHistory()
   const email = useReusableFunction("");
   const password = useReusableFunction("");
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(email.value, password.value);
     if (firebase) {
       firebase
         .doSignInWithEmailAndPassword(email.value, password.value)
         .then((authUser) => {
+          history.push('/home')
           console.log(authUser);
         })
       // .catch((error) => {

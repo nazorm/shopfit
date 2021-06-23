@@ -1,5 +1,6 @@
+import { RouteComponentProps } from "react-router-dom";
 import Firebase from "../firebase";
 
-export interface IValidate{
-    firebase : Firebase  | null
+export interface IValidate {
+   
 }
